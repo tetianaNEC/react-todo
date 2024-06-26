@@ -1,36 +1,33 @@
-//import * as React from 'react';
-
+import TodoList from "./TodoList";
+import AddTodoForm from "./AddTodoForm";
 const title = 'Todo List';
 
-const todoList = [
-  {
-   id: 1,
-   title: 'Read the book', 
-  },
-  {
-    id:2,
-    title: 'Complete assignment',
-  },
-  {
-    id: 3,
-    title: 'Wright essay',
-  }
-];
-function App() {
+
+function App () {
   return (
     <div>
       <h1>{title}</h1>
-
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-      <ul>{todoList.map(function(item){
-        return <li key={item.id}>{item.title}</li>
-      })}</ul>
+      <AddTodoForm/>
+      <Search/>
+      <hr/>
+      <TodoList/>
     </div>
   );
 }
 
 export default App;
+
+
+//React components 
+
+const Search = () => {
+  return (
+  <div>
+    <label htmlFor="search">Search: </label>
+    <input id="search" type="text" />
+  </div>
+  );
+};
 
 
 
