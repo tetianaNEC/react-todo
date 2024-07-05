@@ -8,3 +8,13 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+git checkout main
+git pull
+git checkout -b <branch>
+git status
+git add .
+git status
+git commit -m "<message>"
+git push
+git log --oneline
