@@ -1,34 +1,54 @@
+import { useState } from 'react';
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+import SearchBar from "./SearchBar";
+
 const title = 'Todo List';
 
 
-function App () {
+const App = () => {
+  const [newTodo, setNewTodo] = useState('');
+  const tasks = [
+    {
+      id: 1,
+      title: 'Read the book',
+      url: 'https://openlibrary.org/',
+      time: '1 hour',
+    },
+    {
+      id: 2,
+      title: 'Complete assignment',
+      url: 'https://classes.codethedream.org/',
+      time: '2 hours',
+    },
+    {
+      id: 3,
+      title: 'Write an essay',
+      url: 'https://classes.codethedream.org/',
+      time: '2.5 hours'
+    }
+  ];
+
+
   return (
     <div>
       <h1>{title}</h1>
-      <AddTodoForm/>
-      <Search/>
-      <hr/>
-      <TodoList/>
+      <SearchBar />
+      <AddTodoForm onAddTodo={setNewTodo} />
+      <p>{newTodo}</p>
+      <hr />
+      <TodoList list={tasks} />
     </div>
   );
-}
 
+};
 export default App;
 
 
-//React components 
-
-const Search = () => {
-  return (
-  <div>
-    <label htmlFor="search">Search: </label>
-    <input id="search" type="text" />
-  </div>
-  );
-};
 
 
 
+
+
+//https://github.com/ElijahMSmith/Shopping-App-Hawk
 
