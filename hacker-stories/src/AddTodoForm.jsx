@@ -1,22 +1,46 @@
-const AddTodoForm = (props) => {
+import { useState } from 'react';
 
-const handleAddTodo =(event)=>{
+const AddTodoForm = ({ onAddTodo }) => {
+
+
+  const [todoTitle, setTodoTitle] = useState('');
+
+  // Function to handle input changes
+  const handleTitleChange = (event) => {
+    setTodoTitle(event.target.value);
+  };
+
+  // Function to handle form submission
+  const handleAddTodo = (event) => {
     event.preventDefault();
-    const todoTitle = event.target.title.value;
-    console.log(todoTitle);
-    props.onAddTodo(todoTitle);
-    event.target.reset();
-};
+    if (!todoTitle) return; // Prevent adding empty todos
 
-    return(
-        <form onSubmit={handleAddTodo}>
-            <label htmlFor="todoTitle">Title  </label>
-            <input id="todoTitle" name="title" placeholder="Add new.."/>
-            <button>Add</button>
-        </form>
+    // Create a new todo object with a unique ID
+    const newTodo = {
+      id: Date.now(), // Simple unique ID
+      title: todoTitle,
+      url: '', 
+      time: '' 
+    };
 
-    );
+    // Call the callback handler with the new todo object
+    onAddTodo(newTodo);
+    setTodoTitle(''); // Clear the input field
+  };
 
+  return (
+    <form onSubmit={handleAddTodo}>
+      <label htmlFor="todoTitle">Title</label>
+      <input
+        id="todoTitle"
+        name="title"
+        placeholder="Add new..."
+        value={todoTitle}
+        onChange={handleTitleChange}
+      />
+      <button type="submit">Add</button>
+    </form>
+  );
 };
 
 export default AddTodoForm;

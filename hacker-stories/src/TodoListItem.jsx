@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 
-const TodoListItem = (props) => {
-    return (
-      <li>
-        <span>
-          <a href={props.todo.url}>{props.todo.title}</a>
-        </span>
-        <span>{props.todo.time}</span>
-      </li>
-    );
-  };
-  
-  export default TodoListItem;
+
+const TodoListItem = ({ todo }) => {
+  return (
+    <li>
+      <span>
+        <a href={todo.url}>{todo.title}</a>
+      </span>
+      <span>{todo.time}</span>
+    </li>
+  );
+};
+
+export default TodoListItem;
 
 //props treated as immutable data structure, and can not be changed
 //used to pass information down the component hierarchy - from parent to child and not vice versa
