@@ -5,43 +5,25 @@ import SearchBar from "./SearchBar";
 
 const title = 'Todo List';
 
-
 const App = () => {
-  const [newTodo, setNewTodo] = useState('');
-  const tasks = [
-    {
-      id: 1,
-      title: 'Read the book',
-      url: 'https://openlibrary.org/',
-      time: '1 hour',
-    },
-    {
-      id: 2,
-      title: 'Complete assignment',
-      url: 'https://classes.codethedream.org/',
-      time: '2 hours',
-    },
-    {
-      id: 3,
-      title: 'Write an essay',
-      url: 'https://classes.codethedream.org/',
-      time: '2.5 hours'
-    }
-  ];
+  const [todoList, setTodoList] = useState([]);
 
+  // Function to add a new todo to the list
+  const addTodo = (newTodo) => {
+    setTodoList(prevList => [...prevList, newTodo]);
+  };
 
   return (
     <div>
       <h1>{title}</h1>
       <SearchBar />
-      <AddTodoForm onAddTodo={setNewTodo} />
-      <p>{newTodo}</p>
+      <AddTodoForm onAddTodo={addTodo} />
       <hr />
-      <TodoList list={tasks} />
+      <TodoList todoList={todoList} title="My Plan: " />
     </div>
   );
-
 };
+
 export default App;
 
 
